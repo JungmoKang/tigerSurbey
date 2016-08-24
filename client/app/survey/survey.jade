@@ -1,0 +1,59 @@
+div(ng-include='"app/shell/navbar/navbar.html"')
+#survey
+  header
+    .jumbotron
+      h1 Hello tiger, I'm Jungmo
+      p.lead nice to meet you, U're very special
+  .container
+    .row
+      .col-lg-12
+        h1 Create Survey
+        .well.well-sm
+          form.form(name='form', ng-submit='createSurvey(form)', novalidate)
+            .form-group.required(ng-class='{"has-error": form.firstName.$invalid && submitted }')
+              label.control-label.col-sm-3 First Name
+              .col-sm-9
+                input.form-control(type='text', name='firstName', ng-model='newSurvey.firstName', required)
+                p.help-block(ng-show='form.firstName.$error.required && submitted')
+                  | first name is required
+            .form-group.required(ng-class='{"has-error": form.lastName.$invalid && submitted }')
+              label.control-label.col-sm-3 Last Name
+              .col-sm-9
+                input.form-control(type='text', name='lastName', ng-model='newSurvey.lastName', required)
+                p.help-block(ng-show='form.lastName.$error.required && submitted')
+                  | last name is required
+            .form-group.required(ng-class='{"has-error": form.dateOfBirth.$invalid && submitted }')
+              label.control-label.col-sm-3 Date of birth
+              .col-sm-9
+                pre nSelected date is: {{dt | date:'fullDate' }}
+                h4 Inline
+                div(style='display:inline-block; min-height:290px;')
+                  .well.well-sm(uib-datepicker='', ng-model='dt', datepicker-options='options')
+            .bottom-buttons.col-sm-6.col-sm-offset-6
+              .col-sm-6
+                button.btn.btn-danger.btn-block(type="button", ng-click="resetForm()") Reset
+              .col-sm-6
+                button.btn.btn-primary.btn-block(type='submit') Submit
+            .clearfix
+
+    .row
+      .col-lg-12
+        .panel.panel-default
+          .panel-heading Surveys
+          table.table.table-hover
+            thead
+              th First Name
+              th Last Name
+              th Date of birth(Age)
+              th Speciality
+              th Exp in Languages
+            tbody
+              tr(ng-repeat='survey in surveys')
+                td {{survey.name}}
+  footer.footer
+    .container.text-center
+      p
+        | Jungmo Kang
+        = ' | '
+        a(href='https://www.facebook.com/moya.kang1',target="_blank")
+          i.fa.fa-facebook-official

@@ -1,0 +1,27 @@
+@import 'bootstrap/less/bootstrap.less';
+@import 'font-awesome/less/font-awesome.less';
+
+@icon-font-path: '/bower_components/bootstrap/fonts/';
+@fa-font-path: '/bower_components/font-awesome/fonts';
+
+/**
+ * common styles
+ */
+.form-group.required .control-label:after {
+  content:"*";
+  color:red;
+}
+.full button span {
+  background-color: limegreen;
+  border-radius: 32px;
+  color: black;
+}
+.partially button span {
+  background-color: orange;
+  border-radius: 32px;
+  color: black;
+}
+// injector
+@import 'shell/navbar/navbar.less';
+@import 'survey/survey.less';
+// endinjector
