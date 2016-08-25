@@ -28,4 +28,5 @@ and access to [localhost:9000](http://localhost:9000 "localhost:9000")
 
 ## TODO
 - add test framework and write test code.(I think write test code first, but I can't in this case.)
-- write by TypeScript or ES6 instead coffee script. (coffee script is dying!)
+- write by TypeScript or ES6 instead of coffee script. (coffee script is dying!)
+- add max length validator to first name and last name.
