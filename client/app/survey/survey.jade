@@ -69,20 +69,21 @@ div(ng-include='"app/shell/navbar/navbar.html"')
       .col-lg-12
         .panel.panel-default
           .panel-heading Surveys
-          table.table.table-hover
-            thead
-              th First Name
-              th Last Name
-              th Date of birth(Age)
-              th Speciality
-              th Exp in Languages
-            tbody
-              tr(ng-repeat='survey in surveys')
-                td {{survey.firstName}}
-                td {{survey.lastName}}
-                td {{survey.dateOfBirth | date}} ({{survey.dateOfBirth | calcAge}})
-                td {{survey.speciality}}
-                td {{survey.expInLanguages | arrayToString}}
+          .table-responsive
+            table.table.table-hover
+              thead
+                th First Name
+                th Last Name
+                th Date of birth(Age)
+                th Speciality
+                th Exp in Languages
+              tbody
+                tr(ng-repeat='survey in surveys')
+                  td {{survey.firstName}}
+                  td {{survey.lastName}}
+                  td {{survey.dateOfBirth | date}} ({{survey.dateOfBirth | calcAge}})
+                  td {{survey.speciality}}
+                  td {{survey.expInLanguages | arrayToString}}
   footer.footer
     .container.text-center
       p
