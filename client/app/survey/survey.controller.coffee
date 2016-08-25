@@ -19,6 +19,7 @@ angular.module 'tigerSurveyApp'
       $http.post('/api/surveys',$scope.newSurvey).then (data) ->
         toaster.pop 'success','Sucees!!','Thanks for your reply!'
         $scope.newSurvey = {}
+        $scope.submitted = false
         getSurveys()
       .catch (err) ->
         toaster.pop 'error','Error!!','Oops, there is an error(s).'
