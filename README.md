@@ -1,4 +1,4 @@
-tigerSurbey
+tigerSurvey
 ====
 ## Description
 - write by some wrapper 
