@@ -1,7 +1,7 @@
 tigerSurvey
 ====
 ## Description
-- write by some wrapper 
+- written by some wrappers 
   - [jade](http://jade-lang.com/ "jade")
   - [less](http://less-ja.studiomohawk.com/ "less")
   - [coffee script](http://coffeescript.org/ "coffee script")
@@ -15,7 +15,7 @@ tigerSurvey
 - [bower](https://bower.io/#install-bower)
 
 ## Installation
-    $ git clone https://github.com/JungmoKang/tigerSurbey
+    $ git clone https://github.com/JungmoKang/tigerSurvey
     $ npm install
     $ bower install
     
