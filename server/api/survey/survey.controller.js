@@ -1,18 +1,10 @@
-/**
- * Using Rails-like standard naming convention for endpoints.
- * GET     /things              ->  index
- * POST    /things              ->  create
- * GET     /things/:id          ->  show
- * PUT     /things/:id          ->  update
- * DELETE  /things/:id          ->  destroy
- */
+
 
 'use strict';
 
 var _ = require('lodash');
 var Survey = require('./survey.model');
 
-// Get list of things
 exports.index = function(req, res) {
   Survey.find(function (err, surveys) {
     if(err) { return handleError(res, err); }
@@ -20,7 +12,6 @@ exports.index = function(req, res) {
   });
 };
 
-// Get a single thing
 exports.show = function(req, res) {
   Survey.findById(req.params.id, function (err, thing) {
     if(err) { return handleError(res, err); }
@@ -29,7 +20,6 @@ exports.show = function(req, res) {
   });
 };
 
-// Creates a new thing in the DB.
 exports.create = function(req, res) {
   Survey.create(req.body, function(err, thing) {
     if(err) { return handleError(res, err); }
@@ -37,7 +27,6 @@ exports.create = function(req, res) {
   });
 };
 
-// Updates an existing thing in the DB.
 exports.update = function(req, res) {
   if(req.body._id) { delete req.body._id; }
   Survey.findById(req.params.id, function (err, thing) {
@@ -51,7 +40,6 @@ exports.update = function(req, res) {
   });
 };
 
-// Deletes a thing from the DB.
 exports.destroy = function(req, res) {
   Survey.findById(req.params.id, function (err, thing) {
     if(err) { return handleError(res, err); }

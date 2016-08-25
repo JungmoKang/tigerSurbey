@@ -1,7 +1,7 @@
-tigerSurbey
+tigerSurvey
 ====
 ## Description
-- write by some wrapper 
+- written by some wrappers 
   - [jade](http://jade-lang.com/ "jade")
   - [less](http://less-ja.studiomohawk.com/ "less")
   - [coffee script](http://coffeescript.org/ "coffee script")
@@ -15,7 +15,7 @@ tigerSurbey
 - [bower](https://bower.io/#install-bower)
 
 ## Installation
-    $ git clone https://github.com/JungmoKang/tigerSurbey
+    $ git clone https://github.com/JungmoKang/tigerSurvey
     $ npm install
     $ bower install
     
@@ -24,6 +24,7 @@ tigerSurbey
     $ grunt serve
 and access to [localhost:9000](http://localhost:9000 "localhost:9000")
 ## DEMO
+- [DEMO](https://tigersurvey.herokuapp.com/ 'demo')
 
 ## TODO
 - add test framework and write test code.(I think write test code first, but I can't in this case.)
