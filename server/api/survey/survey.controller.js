@@ -14,7 +14,6 @@ var Survey = require('./survey.model');
 
 // Get list of things
 exports.index = function(req, res) {
-  console.log('all surveys');
   Survey.find(function (err, surveys) {
     if(err) { return handleError(res, err); }
     return res.status(200).json(surveys);

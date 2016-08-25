@@ -3,24 +3,27 @@
 angular.module 'tigerSurveyApp'
 .controller 'SurveyCtrl', ($scope, $http,toaster) ->
   init = ->
-    $scope.surveys = []
-    $scope.newSurvey = {}
+    initValues()
+    thirtyYearsAgo = new Date()
+    thirtyYearsAgo.setYear(thirtyYearsAgo.getFullYear() - 30)
     $scope.dateOptions =
       maxDate: new Date
+      initDate: thirtyYearsAgo
     $http.get('/api/globalValues').then (globalValues) ->
       $scope.skills = globalValues.data.skills
       $scope.languages = globalValues.data.languages
     getSurveys()
+  initValues = ->
+    $scope.surveys = []
+    $scope.newSurvey = {}
+    $scope.submitted = false
+    getSurveys()
   $scope.createSurvey = (form) ->
-    console.log 'submit'
     $scope.submitted = true
     if form.$valid
-      console.log $scope.newSurvey
       $http.post('/api/surveys',$scope.newSurvey).then (data) ->
         toaster.pop 'success','Sucees!!','Thanks for your reply!'
-        $scope.newSurvey = {}
-        $scope.submitted = false
-        getSurveys()
+        initValues()
       .catch (err) ->
         toaster.pop 'error','Error!!','Oops, there is an error(s).'
         err = err.data
@@ -31,12 +34,7 @@ angular.module 'tigerSurveyApp'
   getSurveys = ->
     $http.get('/api/surveys').then (surveys) ->
       $scope.surveys = surveys.data
-  $scope.dateOpen = ->
-    $scope.datePopupOpen = true
   $scope.resetForm = ->
-    console.log 'reset'
     $scope.submitted = false
     $scope.newSurvey = {}
-  $scope.deleteThing = (thing) ->
-    $http.delete '/api/things/' + thing._id
   init()
