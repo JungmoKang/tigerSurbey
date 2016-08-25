@@ -26,7 +26,7 @@ div(ng-include='"app/shell/navbar/navbar.html"')
               label.control-label.col-sm-3 Date of birth
               .col-sm-9
                 .input-group
-                  input.form-control(type='text', name="dateOfBirth", uib-datepicker-popup='dd-MMMM-yyyy',
+                  input.form-control(type='text', name="dateOfBirth", uib-datepicker-popup='MMMM dd,yyyy',
                   ng-model='newSurvey.dateOfBirth',
                   is-open='datePopupOpen', datepicker-options='dateOptions', close-text='Close',
                   required, readOnly)
@@ -72,7 +72,11 @@ div(ng-include='"app/shell/navbar/navbar.html"')
               th Exp in Languages
             tbody
               tr(ng-repeat='survey in surveys')
-                td {{survey.name}}
+                td {{survey.firstName}}
+                td {{survey.lastName}}
+                td {{survey.dateOfBirth | date}} ({{survey.dateOfBirth | calcAge}})
+                td {{survey.speciality}}
+                td {{survey.expInLanguages | arrayToString}}
   footer.footer
     .container.text-center
       p

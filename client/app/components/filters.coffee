@@ -12,4 +12,6 @@ angular.module("filters", [])
     ageDate = new Date(diffNowAndBirth)
     age = Math.abs(ageDate.getUTCFullYear() - 1970)
     return age
-
+.filter 'arrayToString', ->
+  (input) ->
+    input.toString()
