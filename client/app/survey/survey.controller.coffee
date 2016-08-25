@@ -1,7 +1,7 @@
 'use strict'
 
 angular.module 'tigerSurveyApp'
-.controller 'SurveyCtrl', ($scope, $http) ->
+.controller 'SurveyCtrl', ($scope, $http,toaster) ->
   init = ->
     $scope.surveys = []
     $scope.newSurvey = {}
@@ -17,8 +17,10 @@ angular.module 'tigerSurveyApp'
     if form.$valid
       console.log $scope.newSurvey
       $http.post('/api/surveys',$scope.newSurvey).then (data) ->
+        toaster.pop 'success','Sucees!!','Thanks for your reply!'
         getSurveys()
       .catch (err) ->
+        toaster.pop 'error','Error!!','Oops, there is an error(s).'
         err = err.data
         $scope.errors = {}
         angular.forEach err.errors, (error, field) ->
