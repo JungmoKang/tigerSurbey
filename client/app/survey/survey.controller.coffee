@@ -7,8 +7,9 @@ angular.module 'tigerSurveyApp'
     $scope.newSurvey = {}
     $scope.dateOptions =
       maxDate: new Date
-    $scope.skills = ['Front-end','Back-end','Full-stack']
-    $scope.languages = ['C#','JavaScript','HTML','SQL']
+    $http.get('/api/globalValues').then (globalValues) ->
+      $scope.skills = globalValues.data.skills
+      $scope.languages = globalValues.data.languages
     getSurveys()
   $scope.createSurvey = (form) ->
     console.log 'submit'
@@ -18,9 +19,11 @@ angular.module 'tigerSurveyApp'
       $http.post('/api/surveys',$scope.newSurvey).then (data) ->
         getSurveys()
       .catch (err) ->
-        console.log err
-
-
+        err = err.data
+        $scope.errors = {}
+        angular.forEach err.errors, (error, field) ->
+          form[field].$setValidity 'mongoose', false
+          $scope.errors[field] = error.message
   getSurveys = ->
     $http.get('/api/surveys').then (surveys) ->
       $scope.surveys = surveys.data

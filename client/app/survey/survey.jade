@@ -13,20 +13,24 @@ div(ng-include='"app/shell/navbar/navbar.html"')
             .form-group.required(ng-class='{"has-error": form.firstName.$invalid && submitted }')
               label.control-label.col-sm-3 First Name
               .col-sm-9
-                input.form-control(type='text', name='firstName', ng-model='newSurvey.firstName', required)
+                input.form-control(mongoose-error, type='text', name='firstName', ng-model='newSurvey.firstName',required)
                 p.help-block(ng-show='form.firstName.$error.required && submitted')
                   | first name is required
+                p.help-block(ng-show='form.firstName.$error.mongoose')
+                  | {{ errors.firstName }}
             .form-group.required(ng-class='{"has-error": form.lastName.$invalid && submitted }')
               label.control-label.col-sm-3 Last Name
               .col-sm-9
-                input.form-control(type='text', name='lastName', ng-model='newSurvey.lastName', required)
+                input.form-control(mongoose-error, type='text', name='lastName', ng-model='newSurvey.lastName', required)
                 p.help-block(ng-show='form.lastName.$error.required && submitted')
                   | last name is required
+                p.help-block(ng-show='form.lastName.$error.mongoose')
+                  | {{ errors.lastName }}
             .form-group.required(ng-class='{"has-error": form.dateOfBirth.$invalid && submitted }')
               label.control-label.col-sm-3 Date of birth
               .col-sm-9
                 .input-group
-                  input.form-control(type='text', name="dateOfBirth", uib-datepicker-popup='MMMM dd,yyyy',
+                  input.form-control(mongoose-error, type='text', name="dateOfBirth", uib-datepicker-popup='MMMM dd,yyyy',
                   ng-model='newSurvey.dateOfBirth',
                   is-open='datePopupOpen', datepicker-options='dateOptions', close-text='Close',
                   required, readOnly)
@@ -35,6 +39,8 @@ div(ng-include='"app/shell/navbar/navbar.html"')
                       i.glyphicon.glyphicon-calendar
                 p.help-block(ng-show='form.dateOfBirth.$error.required && submitted')
                   | Date of birth is required
+                p.help-block(ng-show='form.dateOfBirth.$error.mongoose')
+                  | {{ errors.dateOfBirth }}
             .form-group(ng-show="newSurvey.dateOfBirth")
               label.control-label.col-sm-3 Age
               .col-sm-9
@@ -43,13 +49,13 @@ div(ng-include='"app/shell/navbar/navbar.html"')
             .form-group
               label.control-label.col-sm-3 Speciality
               .col-sm-9
-                select.form-control(name="speciality",ng-model='newSurvey.speciality',
+                select.form-control(mongoose-error, name="speciality",ng-model='newSurvey.speciality',
                 ng-options='skill for skill in skills')
                   option(value="") Choose your speciality please
             .form-group
               label.control-label.col-sm-3 Experience in languages
               .col-sm-9
-                select.form-control(name="expInLanguages",ng-model='newSurvey.expInLanguages',
+                select.form-control(mongoose-error, name="expInLanguages",ng-model='newSurvey.expInLanguages',
                 ng-options='language for language in languages',multiple)
                 p.help-block you can select multiple languages by mouse click with command or shift key.
             .bottom-buttons.col-sm-6.col-sm-offset-6

@@ -1,12 +1,13 @@
 'use strict'
 
 angular.module 'tigerSurveyApp', [
+  'filters',
+  'directives',
   'ngCookies',
   'ngResource',
   'ngSanitize',
   'ui.router',
-  'ui.bootstrap',
-  'filters'
+  'ui.bootstrap'
 ]
 .config ($stateProvider, $urlRouterProvider, $locationProvider) ->
   $urlRouterProvider
